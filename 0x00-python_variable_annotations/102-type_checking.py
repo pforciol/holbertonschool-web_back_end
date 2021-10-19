@@ -7,6 +7,7 @@ This module contains a type-annotated function.
 
 from typing import Tuple, List, cast
 
+
 def zoom_array(lst: Tuple, factor: int = 2) -> List:
     """
 
