@@ -3,6 +3,8 @@
 
 import logging
 import re
+import os
+import mysql.connector
 from typing import List
 
 PII_FIELDS = ("name", "email", "phone", "ssn", "password")
@@ -79,3 +81,52 @@ def get_logger() -> logging.Logger:
     logger.addHandler(ch)
 
     return logger
+
+
+def get_db() -> mysql.connector.connection.MySQLConnection:
+    """
+
+        Returns:
+            The MySQLConnection object.
+
+    """
+    user = os.getenv("PERSONAL_DATA_DB_USERNAME") or "root"
+    pswd = os.getenv("PERSONAL_DATA_DB_PASSWORD") or ""
+    host = os.getenv("PERSONAL_DATA_DB_HOST") or "localhost"
+    name = os.getenv("PERSONAL_DATA_DB_NAME")
+
+    return mysql.connector.connect(
+        host=host,
+        user=user,
+        password=pswd,
+        database=name)
+
+
+if __name__ == '__main__':
+    db = get_db()
+    cursor = db.cursor()
+
+    query = "SELECT group_concat(COLUMN_NAME) FROM INFORMATION_SCHEMA.COLUMNS\
+            WHERE TABLE_SCHEMA = 'my_db' AND TABLE_NAME = 'users';"
+    cursor.execute(query)
+
+    for row in cursor:
+        keys = row[0]
+
+    keys = keys.split(',')
+
+    cursor.execute("SELECT * FROM users;")
+    for row in cursor:
+        to_join = [f'{k}={v}' for k, v in zip(keys, row)]
+        message = "; ".join(to_join)
+        message += ';'
+        log_record = logging.LogRecord("user_data", logging.INFO, None, None,
+                                       message, None, None)
+
+        formatter = RedactingFormatter(fields=("name", "email", "phone", "ssn",
+                                               "password"))
+
+        print(formatter.format(log_record))
+
+    cursor.close()
+    db.close()
