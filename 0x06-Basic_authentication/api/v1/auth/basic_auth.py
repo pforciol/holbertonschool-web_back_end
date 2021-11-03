@@ -11,7 +11,9 @@ class BasicAuth(Auth):
     """ BasicAuth class
     """
 
-    def extract_base64_authorization_header(self, authorization_header: str) -> str:
+    def extract_base64_authorization_header(
+            self,
+            authorization_header: str) -> str:
         """
             Returns the Base64 part of the Authorization
             header for a Basic Authentication
@@ -27,7 +29,9 @@ class BasicAuth(Auth):
                 return authorization_header[6:]
         return None
 
-    def decode_base64_authorization_header(self, base64_authorization_header: str) -> str:
+    def decode_base64_authorization_header(
+            self,
+            base64_authorization_header: str) -> str:
         """
             Returns the decoded value of a Base64
             string base64_authorization_header
@@ -38,14 +42,17 @@ class BasicAuth(Auth):
             Returns:
                 The decoded value of the header
         """
-        if base64_authorization_header and type(base64_authorization_header) is str:
+        if base64_authorization_header \
+                and type(base64_authorization_header) is str:
             try:
                 return b64decode(base64_authorization_header).decode('utf-8')
-            except:
+            except Exception:
                 return None
         return None
 
-    def extract_user_credentials(self, decoded_base64_authorization_header: str) -> Tuple[str, str]:
+    def extract_user_credentials(
+            self,
+            decoded_base64_authorization_header: str) -> Tuple[str, str]:
         """
             Returns the user email and password from the Base64 decoded value
 
@@ -62,7 +69,9 @@ class BasicAuth(Auth):
                     return (split[0], split[1])
         return (None, None)
 
-    def user_object_from_credentials(self, user_email: str, user_pwd: str) -> TypeVar('User'):
+    def user_object_from_credentials(
+            self,
+            user_email: str, user_pwd: str) -> TypeVar('User'):
         """
             Returns the User instance based on his email and password
 
