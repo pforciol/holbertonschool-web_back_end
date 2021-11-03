@@ -84,8 +84,13 @@ class BasicAuth(Auth):
         """
         if user_email and type(user_email) is str:
             if user_pwd and type(user_pwd) is str:
-                usr = next(iter(User.search({"email": user_email})), None)
-                return usr if usr and usr.is_valid_password(user_pwd) else None
+                try:
+                    usr = User.search({"email": user_email})
+                    if len(usr):
+                        usr = usr[0]
+                        return usr if usr.is_valid_password(user_pwd) else None
+                except Exception:
+                    return None
         return None
 
     def current_user(self, request=None) -> TypeVar('User'):
