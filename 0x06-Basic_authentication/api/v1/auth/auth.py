@@ -28,7 +28,7 @@ class Auth():
         for item in excluded_paths:
             if '*' in item:
                 item = item.replace('*', '.*')
-                item = item.replace('/', '\/')
+                item = item.replace('/', r'\/')
                 if re.compile(item).match(path) is not None:
                     return False
         if path not in excluded_paths:
