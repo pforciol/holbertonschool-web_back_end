@@ -12,18 +12,19 @@ class SessionDBAuth(SessionExpAuth):
 
     def create_session(self, user_id=None):
         """ Creates a session with timeout """
-        session_id = super().create_session(user_id)
+        if user_id:
+            session_id = super().create_session(user_id)
 
-        if session_id:
-            session = UserSession(
-                user_id=user_id,
-                session_id=session_id
-            )
+            if session_id:
+                session = UserSession(
+                    user_id=user_id,
+                    session_id=session_id
+                )
 
-        if session:
-            session.save()
-            UserSession.save_to_file()
-            return session_id
+            if session:
+                session.save()
+                UserSession.save_to_file()
+                return session_id
 
         return None
 
