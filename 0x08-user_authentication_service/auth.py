@@ -56,7 +56,7 @@ class Auth:
             try:
                 user = self._db.find_user_by(session_id=session_id)
                 return user
-            except:
+            except Exception:
                 return None
         return None
 
@@ -73,7 +73,7 @@ class Auth:
             token = _generate_uuid()
             self._db.update_user(user.id, reset_token=token)
             return str(token)
-        except:
+        except Exception:
             raise ValueError
 
     def update_password(self, reset_token: str, password: str) -> None:
@@ -83,6 +83,6 @@ class Auth:
             self._db.update_user(user.id,
                                  hashed_password=_hash_password(password),
                                  reset_token=None)
-        except:
+        except Exception:
             raise ValueError
         return None
