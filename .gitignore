@@ -12,3 +12,5 @@
 
 0x07-Session_authentication/.db_User.json
 0x07-Session_authentication/.db_UserSession.json
+
+0x08-user_authentication_service/main.py
