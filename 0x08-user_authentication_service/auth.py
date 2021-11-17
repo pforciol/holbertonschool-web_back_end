@@ -14,7 +14,7 @@ def _hash_password(password: str) -> bytes:
 
 def _generate_uuid() -> str:
     """ Generate a uuid. """
-    return uuid.uuid4()
+    return str(uuid.uuid4())
 
 
 class Auth:
@@ -23,7 +23,7 @@ class Auth:
     def __init__(self):
         self._db = DB()
 
-    def register_user(self, email: str, password: str) -> User():
+    def register_user(self, email: str, password: str) -> User:
         """ Add a user to the DataBase. """
         try:
             self._db.find_user_by(email=email)
@@ -44,7 +44,7 @@ class Auth:
         """ Create a session related to a user. """
         try:
             user = self._db.find_user_by(email=email)
-            session_id = str(_generate_uuid())
+            session_id = _generate_uuid()
             self._db.update_user(user.id, session_id=session_id)
             return session_id
         except Exception:
