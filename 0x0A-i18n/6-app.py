@@ -19,7 +19,7 @@ class Config():
     """ Config class. """
     LANGUAGES = ["en", "fr"]
 
-    Babel.default_locale = "fr"
+    Babel.default_locale = "en"
     Babel.default_timezone = "UTC"
 
 
