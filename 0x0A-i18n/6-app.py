@@ -41,12 +41,12 @@ def get_user() -> Union[dict, None]:
 def get_locale():
     """ Determines the best match with our supported language. """
     h_locale = request.args.get("locale")
-    if h_locale:
+    if h_locale and h_locale in Config.LANGUAGES:
         return h_locale
 
     if flask.g.user:
-        u_locale = flask.g.user["locale"]
-        if u_locale:
+        u_locale = flask.g.user.get("locale", None)
+        if u_locale and u_locale in Config.LANGUAGES:
             return u_locale
 
     return request.accept_languages.best_match(app.config['LANGUAGES'])
