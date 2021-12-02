@@ -82,11 +82,3 @@ class Cache():
     def get_int(self, key: str) -> int:
         """ Converts the key to an int. """
         return self.get(key, int)
-
-
-if __name__ == "__main__":
-    cache = Cache()
-    cache.store("foo")
-    cache.store("bar")
-    cache.store(42)
-    replay(cache.store)
