@@ -26,3 +26,9 @@
 0x0F-ES6_promise/babel.config.js
 0x0F-ES6_promise/package-lock.json
 0x0F-ES6_promise/package.json
+
+0x10-ES6_classes/node_modules
+0x10-ES6_classes/.eslintrc.js
+0x10-ES6_classes/babel.config.js
+0x10-ES6_classes/package-lock.json
+0x10-ES6_classes/package.json
