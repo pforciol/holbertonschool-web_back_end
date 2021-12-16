@@ -14,3 +14,15 @@
 0x07-Session_authentication/.db_UserSession.json
 
 0x08-user_authentication_service/main.py
+
+0x0E-ES6_basic/node_modules
+0x0E-ES6_basic/.eslintrc.js
+0x0E-ES6_basic/babel.config.js
+0x0E-ES6_basic/package-lock.json
+0x0E-ES6_basic/package.json
+
+0x0F-ES6_promise/node_modules
+0x0F-ES6_promise/.eslintrc.js
+0x0F-ES6_promise/babel.config.js
+0x0F-ES6_promise/package-lock.json
+0x0F-ES6_promise/package.json
