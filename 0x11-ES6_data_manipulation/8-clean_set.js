@@ -1,3 +1,14 @@
 export default function cleanSet(set, startString) {
-  const toto = 'test';
+  if (!startString) {
+    return '';
+  } else {
+    return [...set]
+      .filter((str) => {
+        return str.startsWith(startString);
+      })
+      .map((str) => {
+        return str.slice(startString.length);
+      })
+      .join('-');
+  }
 }
