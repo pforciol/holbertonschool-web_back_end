@@ -7,9 +7,9 @@ export default function groceriesList() {
     Banana: 5,
   };
 
-  let ret = new Map();
+  const ret = new Map();
   for (const item in map) {
-    ret.set(item, map[item]);
+    if (item) ret.set(item, map[item]);
   }
 
   return ret;
