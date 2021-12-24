@@ -16,4 +16,6 @@
 - [x] [0x0D. NoSQL](https://github.com/pforciol/holbertonschool-web_back_end/tree/master/0x0D-NoSQL)
 - [x] [0x0E. ES6 Basic](https://github.com/pforciol/holbertonschool-web_back_end/tree/master/0x0E-ES6_basic)
 - [x] [0x0F. ES6 Promise](https://github.com/pforciol/holbertonschool-web_back_end/tree/master/0x0F-ES6_promise)
-- [ ] [0x10. ES6 Classes](https://github.com/pforciol/holbertonschool-web_back_end/tree/master/0x10-ES6_classes)
+- [x] [0x10. ES6 Classes](https://github.com/pforciol/holbertonschool-web_back_end/tree/master/0x10-ES6_classes)
+- [x] [0x11. ES6 Data Manipulation](https://github.com/pforciol/holbertonschool-web_back_end/tree/master/0x11-ES6_data_manipulation)
+- [ ] [0x12. Node JS Basic](https://github.com/pforciol/holbertonschool-web_back_end/tree/master/0x12-Node_JS_basic)
