@@ -1,0 +1,38 @@
+const fs = require('fs');
+
+const countStudents = (path) => {
+  if (!fs.existsSync(path)) throw Error('Cannot load the database');
+
+  // Convert CSV file to Object.
+  const fileContent = fs.readFileSync(path, 'utf-8');
+  const students = [];
+  const lines = fileContent.split(/\r?\n/);
+  const keys = lines[0].split(',');
+
+  for (let i = 1; i < lines.length - 1; i++) {
+    const values = lines[i].split(',');
+    const object = {};
+
+    for (let j = 0; j < values.length; j++) {
+      object[keys[j]] = values[j];
+    }
+    students.push(object);
+  }
+
+  // Display informations.
+  console.log(`Number of students: ${students.length}`);
+  const fields = new Set();
+  for (const student of students) {
+    fields.add(student.field);
+  }
+
+  for (const f of fields) {
+    const data = students.filter((s) => s.field === f).map((s) => s.firstname);
+
+    console.log(
+      `Number of students in ${f}: ${data.length}. List: ${data.join(', ')}`,
+    );
+  }
+};
+
+module.exports = countStudents;
