@@ -9,11 +9,11 @@ const countStudents = (path) => {
   const lines = fileContent.split(/\r?\n/);
   const keys = lines[0].split(',');
 
-  for (let i = 1; i < lines.length - 1; i++) {
+  for (let i = 1; i < lines.length - 1; i += 1) {
     const values = lines[i].split(',');
     const object = {};
 
-    for (let j = 0; j < values.length; j++) {
+    for (let j = 0; j < values.length; j += 1) {
       object[keys[j]] = values[j];
     }
     students.push(object);
