@@ -33,6 +33,7 @@ const countStudents = async (path) => {
         `Number of students in ${f}: ${data.length}. List: ${data.join(', ')}`,
       );
     }
+    return { students, fields };
   } catch (err) {
     throw new Error('Cannot load the database');
   }
