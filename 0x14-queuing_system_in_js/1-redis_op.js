@@ -12,14 +12,14 @@ client.on('error', (error) => {
   console.error(`Redis client not connected to the server: ${ERROR_MESSAGE}`);
 });
 
-// Set in Redis the value for the key `school_name`.
+// Set in Redis the value for the key `schoolName`.
 const setNewSchool = (schoolName, value) => {
   client.set(schoolName, value, (error, reply) => {
     print(`Reply: ${reply}`);
   });
 };
 
-// Log the value of the key `school_name` into the console.
+// Log the value of the key `schoolName` into the console.
 const displaySchoolValue = (schoolName) => {
   client.get(schoolName, (error, reply) => {
     console.log(reply);
