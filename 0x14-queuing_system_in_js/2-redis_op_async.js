@@ -16,9 +16,7 @@ client.on('error', (error) => {
 
 // Set in Redis the value for the key `schoolName`.
 const setNewSchool = (schoolName, value) => {
-  client.set(schoolName, value, (error, reply) => {
-    print(`Reply: ${reply}`);
-  });
+  client.set(schoolName, value, print);
 };
 
 // Log the value of the key `schoolName` into the console.

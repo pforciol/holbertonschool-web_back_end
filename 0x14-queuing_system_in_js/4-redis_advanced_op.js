@@ -12,18 +12,19 @@ client.on('error', (error) => {
   console.error(`Redis client not connected to the server: ${ERROR_MESSAGE}`);
 });
 
-// Set in Redis the value for the key `schoolName`.
-const setNewSchool = (schoolName, value) => {
-  client.set(schoolName, value, print);
+const schools = {
+  Portland: 50,
+  Seattle: 80,
+  'New York': 20,
+  Bogota: 20,
+  Cali: 40,
+  Paris: 2,
 };
 
-// Log the value of the key `schoolName` into the console.
-const displaySchoolValue = (schoolName) => {
-  client.get(schoolName, (error, reply) => {
-    console.log(reply);
-  });
-};
+for (const [school, value] of Object.entries(schools)) {
+  client.hset('HolbertonSchools', school, value, print);
+}
 
-displaySchoolValue('Holberton');
-setNewSchool('HolbertonSanFrancisco', '100');
-displaySchoolValue('HolbertonSanFrancisco');
+client.hgetall('HolbertonSchools', (error, reply) => {
+  console.log(reply);
+});
