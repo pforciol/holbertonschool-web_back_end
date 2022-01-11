@@ -45,3 +45,11 @@
 0x12-Node_JS_basic/package-lock.json
 0x12-Node_JS_basic/package.json
 0x12-Node_JS_basic/database.csv
+
+0x14-queuing_system_in_js/node_modules
+0x14-queuing_system_in_js/redis*
+0x14-queuing_system_in_js/.eslintrc.js
+0x14-queuing_system_in_js/babel.config.js
+0x14-queuing_system_in_js/package-lock.json
+0x14-queuing_system_in_js/package.json
+0x14-queuing_system_in_js/.babelrc
